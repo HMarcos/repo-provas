@@ -1,4 +1,5 @@
 import prismaClient from "../src/config/database.js";
+import logging from "../src/utils/logging.js";
 
 async function main() {
     await insertTerms();
@@ -9,7 +10,7 @@ async function main() {
 }
 
 main().catch(e => {
-    console.log(e);
+    console.log(logging.error(e));
     process.exit(1);
 }).finally(async () => {
     await prismaClient.$disconnect();
