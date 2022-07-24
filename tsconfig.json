@@ -6,6 +6,7 @@
     "outDir": "dist",
     "target": "ES6"
   },
+  "exclude": ["front_end"],
   "ts-node": {
     "esm": true
   }
