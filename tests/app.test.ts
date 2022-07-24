@@ -37,7 +37,6 @@ describe("Sign up test suite", () => {
         const response = await supertest(app).post('/sign-up').send(signUpData);
         expect(response.status).toBe(409);
     });
-
 });
 
 afterAll(async () => {
