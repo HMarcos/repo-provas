@@ -16,7 +16,28 @@ async function findByName(name: string) {
 };
 
 async function findAllTests() {
-    const tests = await prismaClient.test.findMany();
+    const tests = await prismaClient.test.findMany({
+        select: {
+            id: true,
+            name: true,
+            pdfUrl: true,
+            category: true,
+            teacherDiscipline: {
+                select: {
+                    id: true,
+                    teacher: true,
+                    discipline: {
+                        select: {
+                            id: true,
+                            name: true,
+                            term: true
+                        }
+                    }
+                }
+            }
+        }
+    }
+    );
     return tests;
 };
 

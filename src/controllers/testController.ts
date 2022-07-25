@@ -13,7 +13,6 @@ export async function setTest(req: Request, res: Response) {
 
 export async function getTests(req: Request, res: Response) {
     const groupBy = req.query.groupBy;
-    console.log(logging.debug(`groupBy: ${groupBy}`));
     let tests = null;
     if (!groupBy) {
         tests = await testService.findAllTests();
