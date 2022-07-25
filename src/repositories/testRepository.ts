@@ -82,12 +82,39 @@ async function findGroupbyDisciplines() {
     });
 
     return tests;
-}
+};
+
+async function findGroupByTeachers() {
+    const tests = await prismaClient.teacherDiscipline.findMany({
+        select: {
+            id: true,
+            discipline: {
+                select: {
+                    id: true,
+                    name: true,
+                    term: true
+                }
+            },
+            teacher: true,
+            tests: {
+                select: {
+                    id: true,
+                    name: true,
+                    pdfUrl: true,
+                    category: true
+                }
+            }
+        }
+    });
+
+    return tests;
+};
 
 const testRepository = {
     findByName,
     findAllTests,
     findGroupbyDisciplines,
+    findGroupByTeachers,
     insertTest
 };
 

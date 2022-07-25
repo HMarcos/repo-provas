@@ -20,6 +20,9 @@ export async function getTests(req: Request, res: Response) {
     else if (groupBy === "disciplines") {
         tests = await testService.findTestsGroupByDisciplines();
     }
+    else if (groupBy === "teachers") {
+        tests = await testService.findTestsGroupByTeachers();
+    }
 
     console.log(logging.info("Tests retrieved successfully."));
     res.status(200).send({ tests });

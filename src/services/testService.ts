@@ -26,10 +26,16 @@ async function findTestsGroupByDisciplines() {
     return tests;
 }
 
+async function findTestsGroupByTeachers() {
+    const tests = await testRepository.findGroupByTeachers();
+    return tests;
+}
+
 const testService = {
     createTest,
     findAllTests,
-    findTestsGroupByDisciplines
+    findTestsGroupByDisciplines,
+    findTestsGroupByTeachers
 };
 
 export default testService;
