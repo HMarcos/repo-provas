@@ -42,7 +42,8 @@ POST /sign-up
     - headers: {}
     - body: {
         "email": "email@gmail.com",
-        "password": "senha"
+        "password": "senha",
+        "passwordConfirmation": "senha"
     }
 ```
     
@@ -96,7 +97,6 @@ GET /categories (autenticada)
     - Rota para listar todas as categorias das provas.
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
-```
 ```
 
 ***
