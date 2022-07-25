@@ -98,7 +98,6 @@ GET /categories (autenticada)
     - headers: { "Authorization": "Bearer $token" }
     - body: {}
 ```
-```
 
 ***
 
