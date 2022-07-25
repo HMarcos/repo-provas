@@ -6,10 +6,16 @@ async function findCategoryOrFail(categoryId: number) {
     if (!category){
         throw new AppError(404, "Category not found");
     }
+};
+
+async function findAllCategories() {
+    const categories = await categoryRepository.findAllCategories();
+    return categories;
 }
 
 const categoryService = {
-    findCategoryOrFail
+    findCategoryOrFail,
+    findAllCategories
 };
 
 export default categoryService;

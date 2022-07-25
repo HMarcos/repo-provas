@@ -6,10 +6,16 @@ async function findById(categoryId: number) {
     });
 
     return category;
+};
+
+async function findAllCategories() {
+    const categories = await prismaClient.category.findMany();
+    return categories;
 }
 
 const categoryRepository = {
-    findById
+    findById,
+    findAllCategories
 };
 
 export default categoryRepository;
