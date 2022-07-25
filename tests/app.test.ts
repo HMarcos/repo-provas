@@ -157,6 +157,27 @@ describe("Test suite to create test", () => {
     });
 });
 
+describe("Test suite to get categories", () => {
+    it("Get all categories", async () => {
+        const signUpData = userFactory.createSignUpInfo();
+        await supertest(app).post('/sign-up').send(signUpData);
+
+        const loginData = { email: signUpData.email, password: signUpData.password };
+        let response = await supertest(app).post('/sign-in').send(loginData);
+        const token = response.body.token;
+
+        response = await supertest(app).get("/categories").set('Authorization', `Bearer ${token}`);
+        expect(response.status).toBe(200);
+        expect(response.body).not.toBeNull();
+    });
+
+    it("Send a invalid token - Expect 401", async () => {
+        const token = "invalidToken";
+        const response = await supertest(app).get("/categories").set('Authorization', `Bearer ${token}`);
+        expect(response.status).toBe(401);
+    });
+})
+
 afterAll(async () => {
     await prismaClient.$disconnect();
 })
