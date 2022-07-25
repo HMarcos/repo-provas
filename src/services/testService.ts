@@ -19,11 +19,17 @@ async function createTest(requestTestData: RequestTestData) {
 async function findAllTests() {
     const tests = await testRepository.findAllTests();
     return tests;
+};
+
+async function findTestsGroupByDisciplines() {
+    const tests = await testRepository.findGroupbyDisciplines();
+    return tests;
 }
 
 const testService = {
     createTest,
-    findAllTests
+    findAllTests,
+    findTestsGroupByDisciplines
 };
 
 export default testService;

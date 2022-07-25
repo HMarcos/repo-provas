@@ -26,9 +26,47 @@ async function insertTest(test: TestCreationData) {
     });
 };
 
+async function findGroupbyDisciplines() {
+    const tests = await prismaClient.term.findMany({
+        include: {
+            disciplines: {
+                select: {
+                    id: true,
+                    name: true,
+                    term: true,
+                    teacherDisciplines: {
+                        select: {
+                            id: true,
+                            teacher: true,
+                            discipline: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                    term: true
+                                }
+                            },
+                            tests: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                    pdfUrl: true,
+                                    category: true
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    return tests;
+}
+
 const testRepository = {
     findByName,
     findAllTests,
+    findGroupbyDisciplines,
     insertTest
 };
 
