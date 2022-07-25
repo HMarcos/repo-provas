@@ -6,7 +6,7 @@
     "outDir": "dist",
     "target": "ES6"
   },
-  "exclude": ["front_end"],
+  "exclude": ["front_end", "tests", "thunder_client"],
   "ts-node": {
     "esm": true
   }
