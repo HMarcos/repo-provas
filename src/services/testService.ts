@@ -14,10 +14,16 @@ async function createTest(requestTestData: RequestTestData) {
     };
 
     await testRepository.insertTest(testCreationData);
+};
+
+async function findAllTests() {
+    const tests = await testRepository.findAllTests();
+    return tests;
 }
 
 const testService = {
-    createTest
+    createTest,
+    findAllTests
 };
 
 export default testService;

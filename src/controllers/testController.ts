@@ -9,4 +9,15 @@ export async function setTest(req: Request, res: Response){
 
     console.log(logging.info('Test registered successfully.'));
     res.sendStatus(201);
-}
+};
+
+export async function getTests(req: Request, res: Response) {
+    const groupBy = req.params.groupBy;
+    let tests = null;
+    if (!groupBy) {
+        tests = await testService.findAllTests();
+    };
+
+    console.log(logging.info("Tests retrieved successfully."));
+    res.status(200).send(tests);
+};

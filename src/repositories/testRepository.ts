@@ -13,7 +13,12 @@ async function findByName(name: string) {
     });
 
     return test;
-}
+};
+
+async function findAllTests() {
+    const tests = await prismaClient.test.findMany();
+    return tests;
+};
 
 async function insertTest(test: TestCreationData) {
     await prismaClient.test.create({
@@ -23,6 +28,7 @@ async function insertTest(test: TestCreationData) {
 
 const testRepository = {
     findByName,
+    findAllTests,
     insertTest
 };
 
