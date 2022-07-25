@@ -42,7 +42,8 @@ POST /sign-up
     - headers: {}
     - body: {
         "email": "email@gmail.com",
-        "password": "senha"
+        "password": "senha",
+        "passwordConfirmation": "senha"
     }
 ```
     
