@@ -7,13 +7,22 @@ export type RequestTestData = Omit<TestCreationData, "teacherDisciplineId"> & {
     teacherId: number;
 };
 
+async function findByName(name: string) {
+    const test = await prismaClient.test.findFirst({
+        where: { name }
+    });
+
+    return test;
+}
+
 async function insertTest(test: TestCreationData) {
     await prismaClient.test.create({
         data: test
     });
-}
+};
 
 const testRepository = {
+    findByName,
     insertTest
 };
 
